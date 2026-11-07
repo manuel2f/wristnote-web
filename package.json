@@ -1,0 +1,12 @@
+{
+  "name": "wristnote-web",
+  "version": "1.0.0",
+  "description": "Official landing page and website for the WristNote Android and Wear OS app.",
+  "scripts": {
+    "dev": "npx serve . -l 3000",
+    "start": "npx serve ."
+  },
+  "keywords": ["wristnote", "android", "wear os", "voice notes", "transcription"],
+  "author": "Manuel",
+  "license": "MIT"
+}
