@@ -15,12 +15,14 @@
   <meta name="theme-color" content="#f7f6f2" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0d100e" media="(prefers-color-scheme: dark)">
 
+  <link rel="apple-touch-icon" href="../assets/img/icon.png">
   <link rel="icon" type="image/svg+xml" href="../assets/img/icon.svg">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="WristNote">
   <meta property="og:title" content="WristNote · Notas de voz desde la muñeca">
   <meta property="og:description" content="Empieza a grabar en tu móvil desde tu reloj Wear OS y obtén la transcripción en el propio dispositivo.">
+  <meta property="og:image" content="https://manuel2f.github.io/wristnote-web/assets/img/feature-graphic.png">
 
   <link rel="stylesheet" href="../assets/css/style.css">
   <script src="../assets/js/main.js" defer></script>
@@ -105,40 +107,23 @@
         </div>
 
         <div class="hero-showcase">
-          <div class="hero-devices">
-            <div class="wn-watch" role="img" aria-label="Esfera de reloj Wear OS con la complicación REC de WristNote grabando">
-              <div class="wn-watch-face is-recording">
-                <div class="wn-time">9:41</div>
-                <div class="wn-date">sáb 7 nov</div>
-                <div class="wn-rec">REC</div>
-                <div class="wn-status">● 00:18</div>
-              </div>
+          <div class="mockup-grid">
+            <div class="phone-mockup mockup-left">
+              <img src="../assets/img/es/2.png" alt="Nota transcribiéndose en el móvil con barra de progreso y botón Cancelar" width="720" height="1280">
             </div>
-
-            <div class="wn-phone" role="img" aria-label="Lista de notas de WristNote en el móvil, con la notificación de grabación y una nota transcribiéndose">
-              <div class="wn-screen">
-                <div class="wn-notif">
-                  <span class="wn-dot"></span>
-                  <span><b>WristNote está grabando</b><small>00:18 · iniciada desde el reloj</small></span>
-                  <span class="wn-stop">Detener</span>
-                </div>
-                <div class="wn-screen-title">Notas</div>
-                <div class="wn-search">Buscar notas…</div>
-                <div class="wn-note">
-                  <strong>Transcribiendo… <span>ahora</span></strong>
-                  Procesando en el dispositivo
-                  <div class="wn-progress"><span></span></div>
-                </div>
-                <div class="wn-note">
-                  <strong>Compra del domingo <span>10:02</span></strong>
-                  Tomates, aceite de oliva, pan del día y café para el finde.
-                  <span class="wn-tag">★ Favorita</span>
-                </div>
-                <div class="wn-note">
-                  <strong>Idea para la app <span>Ayer</span></strong>
-                  Resumen: mostrar el progreso de la transcripción en el reloj y permitir cancelarla.
-                </div>
-              </div>
+            <div class="phone-mockup mockup-main">
+              <img src="../assets/img/es/1.png" alt="Lista de grabaciones de WristNote con buscador, favoritas y la transcripción de una nota" width="720" height="1280">
+            </div>
+            <div class="phone-mockup mockup-right">
+              <img src="../assets/img/es/3.png" alt="Transcripción y resumen generado en el dispositivo de una nota de voz" width="720" height="1280">
+            </div>
+          </div>
+          <div class="wn-watch hero-watch" role="img" aria-label="Esfera de reloj Wear OS con la complicación REC de WristNote grabando">
+            <div class="wn-watch-face is-recording">
+              <div class="wn-time">9:41</div>
+              <div class="wn-date">sáb 7 nov</div>
+              <div class="wn-rec">REC</div>
+              <div class="wn-status">● 00:18</div>
             </div>
           </div>
         </div>
@@ -226,12 +211,8 @@
               <h3>Transcrita en el teléfono</h3>
               <p>El reconocimiento de voz integrado de Android (AICore) convierte tu voz en texto en local, con barra de progreso y opción de cancelar.</p>
             </div>
-            <div class="card-media wn-media">
-              <div class="wn-note">
-                <strong>Transcribiendo… <span>62 %</span></strong>
-                Procesando en el dispositivo
-                <div class="wn-progress"><span></span></div>
-              </div>
+            <div class="card-media">
+              <img src="../assets/img/es/2.png" alt="Nota transcribiéndose en el móvil con barra de progreso y botón Cancelar" width="720" height="1280" loading="lazy">
             </div>
           </div>
 
@@ -240,13 +221,8 @@
               <h3>Tus notas, organizadas</h3>
               <p>Busca por texto, marca favoritas y ponles título. Escucha cada grabación con controles de avance y retroceso, corrige nombres en la transcripción y comparte el audio, el texto o el resumen con la app que quieras. También puedes importar audios que ya tengas.</p>
             </div>
-            <div class="card-media wn-media">
-              <div class="wn-search">Buscar notas…</div>
-              <div class="wn-note">
-                <strong>Llamada con el fontanero <span>jue</span></strong>
-                Resumen: viene el martes a las 9:00, llevar el modelo de la válvula.
-                <span class="wn-tag">★ Favorita</span>
-              </div>
+            <div class="card-media">
+              <img src="../assets/img/es/4.png" alt="Nota de la lista de la compra marcada como favorita, con su transcripción y acciones para editar, compartir y borrar" width="720" height="1280" loading="lazy">
             </div>
           </div>
 
@@ -262,14 +238,8 @@
                   <li>Se ejecuta en el dispositivo <span class="range">TPU · GPU · CPU</span></li>
                 </ul>
               </div>
-              <div class="card-media wn-media">
-                <div class="wn-note">
-                  <strong>Análisis <span>Gemma · local</span></strong>
-                  <b>Resumen:</b> visita del fontanero el martes.<br>
-                  <b>Tarea:</b> comprar la válvula de repuesto.<br>
-                  <b>Fecha:</b> martes 9:00
-                  <span class="wn-tag">En el dispositivo</span>
-                </div>
+              <div class="card-media">
+                <img src="../assets/img/es/3.png" alt="Transcripción y resumen generado en el dispositivo de una nota de voz" width="720" height="1280" loading="lazy">
               </div>
             </div>
           </div>

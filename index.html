@@ -15,12 +15,14 @@
   <meta name="theme-color" content="#f7f6f2" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0d100e" media="(prefers-color-scheme: dark)">
 
+  <link rel="apple-touch-icon" href="./assets/img/icon.png">
   <link rel="icon" type="image/svg+xml" href="./assets/img/icon.svg">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="WristNote">
   <meta property="og:title" content="WristNote · Voice notes from your wrist">
   <meta property="og:description" content="Start recording on your phone from your Wear OS watch and get an on-device transcription.">
+  <meta property="og:image" content="https://manuel2f.github.io/wristnote-web/assets/img/feature-graphic.png">
 
   <link rel="stylesheet" href="./assets/css/style.css">
   <script src="./assets/js/main.js" defer></script>
@@ -105,40 +107,23 @@
         </div>
 
         <div class="hero-showcase">
-          <div class="hero-devices">
-            <div class="wn-watch" role="img" aria-label="Wear OS watch face with the WristNote REC complication while recording">
-              <div class="wn-watch-face is-recording">
-                <div class="wn-time">9:41</div>
-                <div class="wn-date">Sat 7 Nov</div>
-                <div class="wn-rec">REC</div>
-                <div class="wn-status">● 00:18</div>
-              </div>
+          <div class="mockup-grid">
+            <div class="phone-mockup mockup-left">
+              <img src="./assets/img/es/2.png" alt="A note being transcribed on the phone with a progress bar and a Cancel button" width="720" height="1280">
             </div>
-
-            <div class="wn-phone" role="img" aria-label="WristNote note list on the phone, with an ongoing recording notification and a note being transcribed">
-              <div class="wn-screen">
-                <div class="wn-notif">
-                  <span class="wn-dot"></span>
-                  <span><b>WristNote is recording</b><small>00:18 · started from watch</small></span>
-                  <span class="wn-stop">Stop</span>
-                </div>
-                <div class="wn-screen-title">Notes</div>
-                <div class="wn-search">Search notes…</div>
-                <div class="wn-note">
-                  <strong>Transcribing… <span>now</span></strong>
-                  Processing on the device
-                  <div class="wn-progress"><span></span></div>
-                </div>
-                <div class="wn-note">
-                  <strong>Groceries for Sunday <span>10:02</span></strong>
-                  Tomatoes, olive oil, fresh bread and coffee for the weekend.
-                  <span class="wn-tag">★ Favorite</span>
-                </div>
-                <div class="wn-note">
-                  <strong>App idea <span>Yesterday</span></strong>
-                  Summary: show the transcription progress on the watch and allow cancelling it.
-                </div>
-              </div>
+            <div class="phone-mockup mockup-main">
+              <img src="./assets/img/es/1.png" alt="WristNote recordings list with search, favorites and the transcription of a note" width="720" height="1280">
+            </div>
+            <div class="phone-mockup mockup-right">
+              <img src="./assets/img/es/3.png" alt="Transcription and on-device summary of a voice note" width="720" height="1280">
+            </div>
+          </div>
+          <div class="wn-watch hero-watch" role="img" aria-label="Wear OS watch face with the WristNote REC complication while recording">
+            <div class="wn-watch-face is-recording">
+              <div class="wn-time">9:41</div>
+              <div class="wn-date">Sat 7 Nov</div>
+              <div class="wn-rec">REC</div>
+              <div class="wn-status">● 00:18</div>
             </div>
           </div>
         </div>
@@ -226,12 +211,8 @@
               <h3>Transcribed on the phone</h3>
               <p>Speech recognition built into Android (AICore) turns your voice into text locally, with a progress bar and a cancel option.</p>
             </div>
-            <div class="card-media wn-media">
-              <div class="wn-note">
-                <strong>Transcribing… <span>62 %</span></strong>
-                Processing on the device
-                <div class="wn-progress"><span></span></div>
-              </div>
+            <div class="card-media">
+              <img src="./assets/img/es/2.png" alt="A note being transcribed on the phone with a progress bar and a Cancel button" width="720" height="1280" loading="lazy">
             </div>
           </div>
 
@@ -240,13 +221,8 @@
               <h3>Your notes, organized</h3>
               <p>Search by text, mark favorites and give notes custom titles. Play each recording with skip controls, fix names in the transcription and share the audio, text or summary with any app. You can also import audio files you already have.</p>
             </div>
-            <div class="card-media wn-media">
-              <div class="wn-search">Search notes…</div>
-              <div class="wn-note">
-                <strong>Call with the plumber <span>Thu</span></strong>
-                Summary: coming Tuesday at 9:00, bring the replacement valve model.
-                <span class="wn-tag">★ Favorite</span>
-              </div>
+            <div class="card-media">
+              <img src="./assets/img/es/4.png" alt="Shopping list note marked as favorite, with its transcription and actions to edit, share and delete" width="720" height="1280" loading="lazy">
             </div>
           </div>
 
@@ -262,14 +238,8 @@
                   <li>Runs on the device <span class="range">TPU · GPU · CPU</span></li>
                 </ul>
               </div>
-              <div class="card-media wn-media">
-                <div class="wn-note">
-                  <strong>Analysis <span>Gemma · local</span></strong>
-                  <b>Summary:</b> plumber visit on Tuesday.<br>
-                  <b>Task:</b> buy replacement valve.<br>
-                  <b>Date:</b> Tuesday 9:00
-                  <span class="wn-tag">On-device</span>
-                </div>
+              <div class="card-media">
+                <img src="./assets/img/es/3.png" alt="Transcription and on-device summary of a voice note" width="720" height="1280" loading="lazy">
               </div>
             </div>
           </div>
