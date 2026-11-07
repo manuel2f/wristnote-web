@@ -22,6 +22,7 @@
   <meta property="og:site_name" content="WristNote">
   <meta property="og:title" content="WristNote · Notas de voz desde la muñeca">
   <meta property="og:description" content="Empieza a grabar en tu móvil desde tu reloj Wear OS y obtén la transcripción en el propio dispositivo.">
+  <meta property="og:video" content="https://manuel2f.github.io/wristnote-web/assets/video/demo-es.mp4">
   <meta property="og:image" content="https://manuel2f.github.io/wristnote-web/assets/img/feature-graphic.png">
 
   <link rel="stylesheet" href="../assets/css/style.css">
@@ -103,7 +104,10 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.793 12 3.61 22.186a2.222 2.222 0 0 1-.61-.884V2.7c0-.332.22-.646.61-.886zm11.24 11.24l2.127-2.128-11.7-6.755 9.573 8.883zm0 1.892l-9.573 8.883 11.7-6.755-2.127-2.128zm1.056-1.056l3.398-1.962a1.054 1.054 0 0 0 0-1.826L15.905 13.89z"/></svg>
             Únete a la beta en Google Play
           </a>
-          <a href="#how" class="btn btn-secondary">Cómo funciona</a>
+          <button class="btn btn-secondary" type="button" data-open-video data-video-src="../assets/video/demo-es.mp4">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            Ver demo (25 s)
+          </button>
         </div>
 
         <div class="hero-showcase">
@@ -157,6 +161,23 @@
               <p>Sin cuentas, sin servidores propios, sin anuncios. Tus notas se quedan en tu móvil.</p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo video -->
+    <section id="demo" class="section" aria-label="Vídeo de demostración">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-tag">Míralo en acción</div>
+          <h2 class="section-title">De la muñeca al texto en segundos</h2>
+          <p class="section-desc">Tocas el reloj, tu móvil graba y la nota queda transcrita y resumida en el propio teléfono.</p>
+        </div>
+        <div class="demo-frame">
+          <video class="mockup-video demo-video" autoplay loop muted playsinline preload="metadata" poster="../assets/video/poster-es.jpg" width="1920" height="1080" aria-label="Demo de WristNote: tocas el reloj, el móvil graba y la nota se transcribe y resume en el teléfono.">
+            <source src="../assets/video/demo-es.webm" type="video/webm">
+            <source src="../assets/video/demo-es.mp4" type="video/mp4">
+          </video>
         </div>
       </div>
     </section>
@@ -444,5 +465,11 @@
       </div>
     </div>
   </footer>
+  <div class="modal-backdrop" data-video-modal aria-hidden="true" role="dialog" aria-modal="true" aria-label="Reproductor del vídeo de demostración">
+    <div class="modal-content">
+      <button class="modal-close" data-close-video aria-label="Cerrar vídeo">&times;</button>
+      <div data-video-frame style="width:100%;height:100%;"></div>
+    </div>
+  </div>
 </body>
 </html>
