@@ -3,6 +3,7 @@
 set -e
 cd "${0:A:h}"
 L=$1; OUT=$2; C=clips; A=assets
+source ./cuts-$L.sh   # cut points of the last capture in this language (see README)
 # Timeline: A 0-3.4 tap · B 3.4-12.2 recording · C 12.2-15.2 processing · D 15.2-21.5 note · end 21.5-25
 PX=1290; PY=100; WX=730; WY=360
 cap() { # index start end

@@ -32,4 +32,4 @@ for l in es en; do
 done
 ```
 
-Los textos de cada paso están en `make_assets.py` (`CAPTIONS`) y los tiempos en `render.sh` / `graph.tmpl`. Si vuelves a capturar, revisa los cortes en `graph.tmpl`: el toque en el reloj (~3,0 s en `w_idle.mp4`, cortar antes de "No se pudo conectar"), el fotograma blanco del enlace en `p_rec.mp4` (entre 1,75 y 2,4 s) y el final de la grabación (antes de pulsar Detener, ~10,7 s).
+Los textos de cada paso están en `make_assets.py` (`CAPTIONS`) y los tiempos en `render.sh` / `graph.tmpl`. Los puntos de corte de cada idioma están en `cuts-es.sh` y `cuts-en.sh`. Si vuelves a capturar, revísalos: el toque en el reloj en `w_idle.mp4` (cortar antes de "No se pudo conectar"), el destello blanco del enlace en `p_rec.mp4` y el final de la grabación (antes de pulsar Detener). Arranca los emuladores con `-gpu host` (o `hw.gpu.enabled=yes` en el AVD) para que la captura vaya fluida.

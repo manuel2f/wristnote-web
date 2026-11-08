@@ -1,13 +1,13 @@
 
   [0:v]fps=30,split[pr1][pr2];
-  [pr1]trim=0:1.75,setpts=PTS-STARTPTS,tpad=start_duration=1.65:start_mode=clone[pa];
-  [pr2]trim=2.4:10.7,setpts=PTS-STARTPTS,tpad=stop_duration=2:stop_mode=clone,trim=0:8.8,setpts=PTS-STARTPTS[pb];
+  [pr1]trim=0:${PA_END},setpts=PTS-STARTPTS,tpad=start_duration=$(( 3.4 - PA_END )):start_mode=clone[pa];
+  [pr2]trim=${PB_START}:${PB_END},setpts=PTS-STARTPTS,tpad=stop_duration=2:stop_mode=clone,trim=0:8.8,setpts=PTS-STARTPTS[pb];
   [1:v]fps=30,split[pn1][pn2];
   [pn1]trim=0:0.2,setpts=PTS-STARTPTS,tpad=stop_duration=3:stop_mode=clone,trim=0:3,setpts=PTS-STARTPTS[pc];
   [pn2]trim=1.0:6.0,setpts=PTS-STARTPTS,tpad=stop_duration=6:stop_mode=clone,trim=0:9.8,setpts=PTS-STARTPTS[pd];
   [pa][pb][pc][pd]concat=n=4,scale=396:880:flags=lanczos,format=rgba[ps];
   [14:v]format=gray,trim=0:25[pm]; [ps][pm]alphamerge[phone];
-  [2:v]fps=30,trim=0:3.25,setpts=PTS-STARTPTS,tpad=stop_duration=1:stop_mode=clone,trim=0:3.4,setpts=PTS-STARTPTS,format=rgba[wa];
+  [2:v]fps=30,trim=0:${WA_END},setpts=PTS-STARTPTS,tpad=stop_duration=1:stop_mode=clone,trim=0:3.4,setpts=PTS-STARTPTS,format=rgba[wa];
   [3:v]fps=30,scale=454:454,format=rgba[wb];
   [4:v]fps=30,setpts=PTS-STARTPTS,tpad=stop_duration=1:stop_mode=clone,trim=0:3,setpts=PTS-STARTPTS,format=rgba[wc];
   [5:v]fps=30,scale=454:454,format=rgba[wd];
