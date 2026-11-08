@@ -2,18 +2,25 @@
 # Records the raw clips for the demo video from two running emulators.
 #   Phone: WristNote_Video (emulator-5554), started WITH audio (no -no-audio), debug app seeded with demo notes.
 #   Watch: a Wear OS round emulator (emulator-5556) with the wear debug APK installed.
+# Usage: capture.sh [es|en]   (app language and demo notes from notes/<lang>; default es)
 # Output: clips/{w_idle.mp4,w_rec.png,w_proc.mp4,w_done.png,p_rec.mp4,p_note.mp4}
 set -e
 cd "${0:A:h}"
+L=${1:-es}
+case $L in
+  es) LOC=es-ES; LIST="Tus grabaciones" ;;
+  en) LOC=en-US; LIST="Your recordings" ;;
+  *) echo "unknown language: $L"; exit 1 ;;
+esac
 mkdir -p clips
 PK=io.github.manuel2f.wristnote.debug
 P() { adb -s emulator-5554 "$@"; }
 W() { adb -s emulator-5556 "$@"; }
 
-# --- Phone setup: dark mode, Spanish app locale, clean status bar (9:41, full battery)
+# --- Phone setup: dark mode, app locale, clean status bar (9:41, full battery)
 P shell cmd uimode night yes >/dev/null
-P shell cmd locale set-app-locales $PK --locales es-ES
-W shell cmd locale set-app-locales $PK --locales es-ES
+P shell cmd locale set-app-locales $PK --locales $LOC
+W shell cmd locale set-app-locales $PK --locales $LOC
 P shell settings put global sysui_demo_allowed 1
 demo() { P shell am broadcast -a com.android.systemui.demo -e command "$@" >/dev/null; }
 demo enter; demo clock -e hhmm 0941; demo battery -e level 100 -e plugged false
@@ -21,9 +28,19 @@ demo network -e wifi show -e level 4; demo network -e mobile hide; demo notifica
 
 # Remove any recordings that are not the seeded demo notes (ids 1a2b3c4d-000[1-4])
 clean() { for f in $(P shell run-as $PK ls files/recordings | tr -d '\r' | grep -v '1a2b3c4d-000[1-4]'); do P shell run-as $PK rm files/recordings/$f; done; }
+# Write the demo notes' text in the chosen language (the .wav files and their timestamps stay)
+seed() {
+  for i in 1 2 3 4; do id=1a2b3c4d-000$i-4000-8000-00000000000$i
+    for e in meta.json txt summary.txt; do
+      P push notes/$L/$i.$e /data/local/tmp/note >/dev/null
+      P shell "run-as $PK sh -c 'cat /data/local/tmp/note > files/recordings/$id.$e && touch -r files/recordings/$id.wav files/recordings/$id.$e'"
+    done
+  done
+  P shell rm /data/local/tmp/note
+}
 open_list() {
   P shell am force-stop $PK; P shell am start -n $PK/com.wearrecap.ui.MainActivity >/dev/null
-  until P exec-out uiautomator dump /dev/tty 2>/dev/null | grep -q "Tus grabaciones"; do sleep 1; done; sleep 1
+  until P exec-out uiautomator dump /dev/tty 2>/dev/null | grep -q "$LIST"; do sleep 1; done; sleep 1
 }
 
 # --- Watch clips (state forced through the app's SharedPreferences, see wstate.sh)
@@ -38,6 +55,8 @@ wrec w_proc PROCESSING 5
 ./wstate.sh RECORDING; sleep 6; W exec-out screencap -p > clips/w_rec.png
 ./wstate.sh COMPLETED; sleep 6; W exec-out screencap -p > clips/w_done.png
 ./wstate.sh IDLE
+
+seed
 
 # --- Phone clip 1: recording starts (same deep link the watch sends) and is stopped
 clean; open_list

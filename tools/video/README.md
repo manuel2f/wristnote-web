@@ -14,10 +14,10 @@ Deben ser `emulator-5554` (móvil) y `emulator-5556` (reloj).
 ## 2. Capturar
 
 ```bash
-./capture.sh
+./capture.sh es   # o: ./capture.sh en (app y notas de demo en inglés, desde notes/en)
 ```
 
-El reloj no se empareja con el móvil: `wstate.sh` escribe cada estado en las preferencias de la app debug y la reabre. La transcripción real no funciona en el emulador, así que el paso 4 enseña una nota de demo.
+El reloj no se empareja con el móvil: `wstate.sh` escribe cada estado en las preferencias de la app debug y la reabre. La transcripción real no funciona en el emulador, así que el paso 4 enseña una nota de demo (sus textos están en `notes/<idioma>`).
 
 ## 3. Componer
 
@@ -32,4 +32,4 @@ for l in es en; do
 done
 ```
 
-Los textos de cada paso están en `make_assets.py` (`CAPTIONS`) y los tiempos en `render.sh` / `graph.tmpl`. Si vuelves a capturar, revisa los cortes: el toque en el reloj (~3,06 s en `w_idle.mp4`) y el fotograma blanco del enlace en `p_rec.mp4` (entre 1,9 y 2,6 s).
+Los textos de cada paso están en `make_assets.py` (`CAPTIONS`) y los tiempos en `render.sh` / `graph.tmpl`. Si vuelves a capturar, revisa los cortes en `graph.tmpl`: el toque en el reloj (~3,0 s en `w_idle.mp4`, cortar antes de "No se pudo conectar"), el fotograma blanco del enlace en `p_rec.mp4` (entre 1,75 y 2,4 s) y el final de la grabación (antes de pulsar Detener, ~10,7 s).
